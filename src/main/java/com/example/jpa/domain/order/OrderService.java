@@ -13,8 +13,14 @@ public class OrderService {
 
     private OrderRepository orderRepository;
 
-    public List<Order> orders(){
+    public List<Order> getOrders(){
         List<Order> orders = orderRepository.findAll();
+        return orders;
+    }
+
+
+    public List<CustomOrderByNative> getOrdersByNativeQuery(){
+        List<CustomOrderByNative> orders = orderRepository.getOrdersByNativeQuery();
         return orders;
     }
 

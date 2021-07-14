@@ -19,8 +19,14 @@ public class OrderController {
     private final OrderService orderService;
 
     @ApiOperation("주문 리스트 조회")
-    @GetMapping("")
+    @GetMapping("jpa")
     public List<Order> getOrders() {
-        return orderService.orders();
+        return orderService.getOrders();
+    }
+
+    @ApiOperation("주문 리스트 조회(NativeQuery)")
+    @GetMapping("native")
+    public List<CustomOrderByNative> getOrdersByNativeQuery() {
+        return orderService.getOrdersByNativeQuery();
     }
 }
