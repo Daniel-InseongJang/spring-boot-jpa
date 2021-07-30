@@ -8,7 +8,7 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @Builder
 @Data
-public class CustomOrderByNative {
+public class CustomOrderByQlrm {
 
     private long nativeId;
 
@@ -17,7 +17,7 @@ public class CustomOrderByNative {
     private int nativePrice;
 
 
-    public CustomOrderByNative(BigInteger nativeId, BigInteger nativeCustomerId, Integer nativePrice) {
+    public CustomOrderByQlrm(BigInteger nativeId, BigInteger nativeCustomerId, Integer nativePrice) {
         this.nativeId = nativeId.longValue();
         this.nativeCustomerId = nativeCustomerId.longValue();
         this.nativePrice = nativePrice;

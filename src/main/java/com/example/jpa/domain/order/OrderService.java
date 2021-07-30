@@ -1,6 +1,9 @@
 package com.example.jpa.domain.order;
 
+import com.example.jpa.config.web.PagedResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +21,8 @@ public class OrderService {
         return orders;
     }
 
-
-    public List<CustomOrderByNative> getOrdersByNativeQuery(){
-        List<CustomOrderByNative> orders = orderRepository.getOrdersByNativeQuery();
+    public List<CustomOrderByQlrm> getOrdersByQlrm(){
+        List<CustomOrderByQlrm> orders = orderRepository.getOrdersByQlrm();
         return orders;
     }
 
@@ -29,5 +31,9 @@ public class OrderService {
             new Exception("insert list is empty");
         }
         return orderRepository.saveAll(insertOrderList);
+    }
+
+    public Page<Order> getOrdersByPaged(Pageable pageable) {
+        return orderRepository.findAll(pageable);
     }
 }

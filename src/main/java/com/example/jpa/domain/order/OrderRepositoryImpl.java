@@ -12,13 +12,13 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     private EntityManager entityManager;
 
     @Override
-    public List<CustomOrderByNative> getOrdersByNativeQuery() {
+    public List<CustomOrderByQlrm> getOrdersByQlrm() {
         String query;
         query = "SELECT o.id as native_id, o.customer_id as native_customer_id, o.price as native_price FROM orders o;";
 
         final Query nativeQuery = entityManager.createNativeQuery(query);
         JpaResultMapper jpaResultMapper = new JpaResultMapper();
-        return jpaResultMapper.list(nativeQuery, CustomOrderByNative.class);
+        return jpaResultMapper.list(nativeQuery, CustomOrderByQlrm.class);
 //        final List<CustomOrderByNative> orders = nativeQuery.getResultList();
 //        return orders;
     }
