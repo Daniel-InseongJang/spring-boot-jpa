@@ -6,6 +6,7 @@ import com.example.jpa.config.web.PagedResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,12 @@ public class OrderController {
     @GetMapping("paged")
     public PagedResponse<Order> getOrdersByPaged(OneBasedPageRequest pageRequest) {
         return new PagedResponse(orderService.getOrdersByPaged(pageRequest.toZeroBasedPageable()));
+    }
+
+    @ApiOperation("주문 리스트 조회(Sliced)")
+    @GetMapping("sliced")
+    public Slice<Order> getOrdersBySliced(OneBasedPageRequest pageRequest) {
+        return orderService.getOrdersBySliced(pageRequest.toZeroBasedPageable());
     }
 
     @ApiOperation("주문 리스트 조회(Paged convert Cursored)")
